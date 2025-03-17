@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ETL"
+dynamic = ["version"]
+dependencies = [
+  "pandas",
+  "pyspark","delta-spark",
+  "apache-airflow",
+  "tqdm"
+]
+requires-python = ">=3.11"
+authors = [
+  {name = "Thibault Lucidarme", email = "thibault.lucidarme@gmail.com"},
+]
+description = "Medaillon architecture with airflow"
+readme = "README.md"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+
+[project.optional-dependencies]
+test = [
+    "tox",
+    "pytest",
+    "pytest-cov",
+    "pytest_benchmark",
+    "pytest_check",
+]
+
+[project.urls]
+Homepage = "https://localhost:8080"
+
+[tool.setuptools.packages.find]
+include = ["src"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "--no-cov-on-fail"
+testpaths = ["src"]
+
+[tool.ruff]
+line-length = 100
